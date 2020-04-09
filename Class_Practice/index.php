@@ -1,59 +1,59 @@
 <?php
-//class practice ->instationate -> object
+class practice ->instationate -> object
 
-// class Team
-// {
-//  protected $name;
+class Team
+{
+ protected $name;
 
-//  protected $members;
+ protected $members;
 
-//  public function __construct($name,$members=[])
-//  {
-//      $this->name = $name;
-//      $this->members = $members;
-//  }
+ public function __construct($name,$members=[])
+ {
+     $this->name = $name;
+     $this->members = $members;
+ }
 
-// public static function create($name,$members=[]){
-//   return new static($name,$members);
-// }
+public static function create($name,$members=[]){
+  return new static($name,$members);
+}
 
-// public static function build(...$params){
+public static function build(...$params){
 
-//   return new static(...$params);
+  return new static(...$params);
 
-// }
+}
 
-//  public function add($name)
-//  {
-//    $this->members[] = $name; 
-//  }
-
-
-// }
-
-// class Member
-// {
-//   protected $name;
-//   public function __construct($name)
-//   {
-//     $this->name = $name;
-//   }
-// }
+ public function add($name)
+ {
+   $this->members[] = $name; 
+ }
 
 
-// //
-// $acam = new Team("acam");
-// $acam->add('Lisa');
+}
 
-// //static class method to create an object
-// $berry = Team::create("berry",[new Member("Jhao"), new Member("Mary")]);
+class Member
+{
+  protected $name;
+  public function __construct($name)
+  {
+    $this->name = $name;
+  }
+}
 
-// //spread operator
-// $cherry = Team::build("cherry",["Jhao","Mary"]);
 
-// //var_dump($cherry);
-// //var_dump($acam);
-// var_dump($berry);
+//
+$acam = new Team("acam");
+$acam->add('Lisa');
+
+//static class method to create an object
+$berry = Team::create("berry",[new Member("Jhao"), new Member("Mary")]);
+
+//spread operator
+$cherry = Team::build("cherry",["Jhao","Mary"]);
+
+//var_dump($cherry);
+//var_dump($acam);
+var_dump($berry);
 
 
 
@@ -95,25 +95,25 @@ class SpecialCoffeeMaker extends CoffeeMaker
 
 }
 
-//(new SpecialCoffeeMaker('sugar','milk'))->brew();
-//(new SpecialCoffeeMaker)->brewLatte();
+(new SpecialCoffeeMaker('sugar','milk'))->brew();
+(new SpecialCoffeeMaker('sugar','milk'))->brewLatte();
 
-// class Collection
-// {
-//   protected $items;
+class Collection
+{
+  protected $items;
 
-//   public function __construct(array $items)
-//  {
-//    $this->items = $items;
-//  }
+  public function __construct(array $items)
+ {
+   $this->items = $items;
+ }
 
-//  public function sum($key){
-//    return 
-//    array_sum(
-//      array_column( $this->items,$key)
-//    );
-//   }
-// }
+ public function sum($key){
+   return 
+   array_sum(
+     array_column( $this->items,$key)
+   );
+  }
+}
 
 /*array_map(function ($value) use (&$an_array ) {
   $an_array [$value] = (boolean)$an_array [$value];   //example operation:
@@ -121,32 +121,32 @@ class SpecialCoffeeMaker extends CoffeeMaker
 */
 
 
-// class VideoCollection extends Collection
-// {
-//   public function length()
-//   {
-//     return $this->sum('length');
-//   }
-// }
+class VideoCollection extends Collection
+{
+  public function length()
+  {
+    return $this->sum('length');
+  }
+}
 
 
-// $collection = new VideoCollection([new Video('New',200), new Video('ma',300)]);
-// echo $collection->length("length");
+$collection = new VideoCollection([new Video('New',200), new Video('ma',300)]);
+echo $collection->length("length");
 
-// class Video
-// {
-//   public $tilte;
-//   public $length;
+class Video
+{
+  public $tilte;
+  public $length;
 
-//   public function __construct($title,$length)
-//   {$this->title = $title;
-//   $this->length = $length;
-//   }
-//   public function length()
-//   {
-//     return $this->length;
-//   }
-// }
+  public function __construct($title,$length)
+  {$this->title = $title;
+  $this->length = $length;
+  }
+  public function length()
+  {
+    return $this->length;
+  }
+}
 
 
 
@@ -197,7 +197,7 @@ class HeroOfToday extends AchievementBadge
 }
 
 
-// echo (new FirstThousandPoints())->icon();
+echo (new FirstThousandPoints())->icon();
 
 
 function printName( AchievementBadge $name)
@@ -216,7 +216,7 @@ Class Mother
 
 }
 
-//printName(new HeroOfToday);
+printName(new HeroOfToday);
 
 
 
@@ -227,114 +227,114 @@ Class Mother
 
 
 
-// interface iNewsLetter
-// {
+interface iNewsLetter
+{
 
-// public function subscribe($message);
+public function subscribe($message);
 
-// }
-
-
-
-// class NewsCompaign implements iNewsLetter
-// {
-
-// public function subscribe($message)
-// {
-// echo $message;
-// }
-
-// }
+}
 
 
 
+class NewsCompaign implements iNewsLetter
+{
 
-// class Drip implements iNewsLetter
-// {
+public function subscribe($message)
+{
+echo $message;
+}
 
-//   public function subscribe($message)
-//   {
-//   echo 'Subscribe newsletter by '.$message;
-//   }
-
-// }
+}
 
 
 
 
-// class NewsLetterCompaign
-// {
+class Drip implements iNewsLetter
+{
 
-// public function compaign(iNewsLetter $newsLetter,$email)
-// {
+  public function subscribe($message)
+  {
+  echo 'Subscribe newsletter by '.$message;
+  }
 
-// $newsLetter->subscribe($email);
-
-// }
-
-// }
+}
 
 
 
 
-// (new NewsLetterCompaign())->compaign(new NewsCompaign(),'fleeting@gmail.com');
-// (new NewsLetterCompaign())->compaign(new Drip(),'fleeting@gmail.com');
+class NewsLetterCompaign
+{
 
-// // Composition: has a relationship
+public function compaign(iNewsLetter $newsLetter,$email)
+{
 
-// interface BillServiceProvider
-// {
-//   public function auth($user);
+$newsLetter->subscribe($email);
 
-// }
+}
 
-
-// class StriprGateway implements BillServiceProvider
-// {
-//   public function auth($user){
-//     echo "Already find user $user by stripe";
-//   }
-
-// }
-
-// class WorldPress implements BillServiceProvider
-// {
-//   public function auth($user){
-//     echo "Already find user $user by worldpress";
-//   }
-
-// }
-
-// class Subscription
-// {
-// protected $user;
-
-// protected $bsp;
-
-// public function __construct(BillServiceProvider $bsp, $user)
-// {
-// $this->bsp = $bsp;
-// $this->user = $user;
-// }
-
-// public function cancel()
-// {
-//   //$this->bsp->auth($this->user);
-//   var_dump(new static(new WorldPress(),'Static'));
-// }
-
-// public static function change()
-// {
-//   var_dump(new self(new WorldPress(),'SLEF'));
-// }
-
-// }
+}
 
 
 
 
-// //(new Subscription(new StriprGateway(),'YAYA'))->change();
-//(new Subscription(new WorldPress,'JHAO'))->cancel();
+(new NewsLetterCompaign())->compaign(new NewsCompaign(),'fleeting@gmail.com');
+(new NewsLetterCompaign())->compaign(new Drip(),'fleeting@gmail.com');
+
+// Composition: has a relationship
+
+interface BillServiceProvider
+{
+  public function auth($user);
+
+}
+
+
+class StriprGateway implements BillServiceProvider
+{
+  public function auth($user){
+    echo "Already find user $user by stripe";
+  }
+
+}
+
+class WorldPress implements BillServiceProvider
+{
+  public function auth($user){
+    echo "Already find user $user by worldpress";
+  }
+
+}
+
+class Subscription
+{
+protected $user;
+
+protected $bsp;
+
+public function __construct(BillServiceProvider $bsp, $user)
+{
+$this->bsp = $bsp;
+$this->user = $user;
+}
+
+public function cancel()
+{
+  //$this->bsp->auth($this->user);
+  var_dump(new static(new WorldPress(),'Static'));
+}
+
+public static function change()
+{
+  var_dump(new self(new WorldPress(),'SLEF'));
+}
+
+}
+
+
+
+
+//(new Subscription(new StriprGateway(),'YAYA'))->change();
+(new Subscription(new WorldPress,'JHAO'))->cancel();
 
 
 //Vaule objects and mutability
@@ -416,28 +416,28 @@ try{
 //$this: instantiated object; 
 //self/static: class->self(who owns the method)/static(who calls the method)
 // parent: parent::_construct(params)->parent class
-// class A
-// {
-// static $name = 'A';
-// public static function name()
-// {echo static::$name;
-// } 
-// public static function selfName()
-// {echo self::$name;
-// } 
-// }
+class A
+{
+static $name = 'A';
+public static function name()
+{echo static::$name;
+} 
+public static function selfName()
+{echo self::$name;
+} 
+}
 
 
-// class B extends A
-// {
-// static $name = 'B';
+class B extends A
+{
+static $name = 'B';
 
-// }
+}
 
 
-// B::selfName();//A
+B::selfName();//A
 
-// B::name();//B
+B::name();//B
 
 
 // try and catch exception: 
