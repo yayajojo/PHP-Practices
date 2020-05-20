@@ -1,5 +1,5 @@
 <?php
-class practice ->instationate -> object
+//class practice ->instationate -> object
 
 class Team
 {
